@@ -1,0 +1,15 @@
+# GOAT-TS CIG config (optional; defaults used if missing)
+graph:
+  backend: sqlite
+  path: data/cig_graph.db
+  in_memory_max_nodes: 1000
+
+wave:
+  ticks: 20
+  decay: 0.15
+  epsilon: 0.01
+  max_ticks: 50
+
+system:
+  max_threads: null
+  lazy_load: true
