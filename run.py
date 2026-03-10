@@ -1,4 +1,7 @@
-"""Launcher: sets PYTHONPATH and runs CIG CLI. Usage: python run.py --seed "AI Ethics"."""
+"""Launcher: sets PYTHONPATH and runs CIG CLI.
+Usage: python run.py --seed "AI Ethics"
+       python run.py --text "Raw text..."  |  python run.py --file path.txt
+       python run.py --json for full JSON output. See README.md for data-gen and fine-tune."""
 
 import os
 import sys

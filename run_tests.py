@@ -11,11 +11,13 @@ sys.path.insert(0, str(root))
 def run():
     from tests.test_cig import (
         test_ts_propagation_python_fallback,
+        test_ts_propagation_converges_and_uses_rust_when_available,
         test_knowledge_graph_and_idea_map,
         test_run_cig_smoke,
     )
     tests = [
         ("TS propagation (Python fallback)", test_ts_propagation_python_fallback),
+        ("Wave convergence (+ Rust when available)", test_ts_propagation_converges_and_uses_rust_when_available),
         ("Knowledge graph + idea map", test_knowledge_graph_and_idea_map),
         ("run_cig smoke", test_run_cig_smoke),
     ]

@@ -1,5 +1,8 @@
 # Minimal deps for GOAT-TS CIG (Python layer)
 # Optional: pyyaml for YAML config
 pyyaml>=6.0
-# Rust extension (build separately): pip install ./rust  or  cd rust && maturin develop
+# Hardware autodetection for data-gen / LITE modes
+psutil>=5.9.0
+# Build Rust extension: pip install maturin, then in rust/: python -m maturin develop
+maturin>=1.5
 # goat-ts-core  # uncomment after building rust

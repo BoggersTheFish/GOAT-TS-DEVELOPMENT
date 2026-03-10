@@ -11,6 +11,7 @@ def graph_dict_to_rust_format(graph_dict: dict[str, Any]) -> tuple[list[tuple[in
     """
     Convert Python graph representation to Rust-friendly format.
     Returns (node_list, edge_list): nodes as (id, influence), edges as (from, to, strength).
+    Edge strength can be negative for interference / inhibition (negative waves).
     """
     nodes = graph_dict.get("nodes", [])
     edges = graph_dict.get("edges", [])

@@ -53,7 +53,7 @@ impl RustGraph {
             PyErr::new::<PyValueError, _>("end node not found")
         })?;
         let res = dijkstra(&self.inner, start_idx, Some(end_idx), |e| *e.weight());
-        let dist = res.get(&end_idx).copied().ok_or_else(|| {
+        let _dist = res.get(&end_idx).copied().ok_or_else(|| {
             PyErr::new::<PyValueError, _>("No path found")
         })?;
         // Reconstruct path by walking predecessors (petgraph dijkstra returns distances only)

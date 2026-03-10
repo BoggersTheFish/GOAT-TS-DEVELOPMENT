@@ -31,10 +31,11 @@ rust/target/
 **/*.rs.bk
 Cargo.lock
 
-# Local data (keep schema; ignore DB if you want a clean clone)
+# Local data (keep dirs; ignore generated DB and JSONL)
 data/*.db
 data/*.db-journal
 data/*.db-wal
+data/*.jsonl
 
 # IDE / OS
 .idea/

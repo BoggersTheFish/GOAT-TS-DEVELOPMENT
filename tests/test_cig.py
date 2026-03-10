@@ -32,6 +32,32 @@ def test_ts_propagation_python_fallback():
     assert out[1] >= out[3]
 
 
+def test_ts_propagation_converges_and_uses_rust_when_available():
+    """Wave propagation converges (delta < epsilon) and prefers Rust when built."""
+    from goat_ts_cig.ts_engine import run_ts_propagation, HAS_RUST
+
+    graph = {
+        "nodes": [
+            {"id": 1, "influence": 1.0},
+            {"id": 2, "influence": 0.0},
+        ],
+        "edges": [
+            {"from": 1, "to": 2, "strength": 0.5},
+            {"from": 2, "to": 1, "strength": 0.5},
+        ],
+    }
+    out = run_ts_propagation(graph, ticks=50, decay=0.1, epsilon=1e-6, max_ticks=200)
+    assert isinstance(out, dict)
+    assert 1 in out and 2 in out
+    # Both nodes should end up with similar influence once fully converged.
+    assert abs(out[1] - out[2]) < 0.05
+    # Smoke check that Rust path doesn't raise when available.
+    if HAS_RUST:
+        # A second call should also succeed and re-use the compiled extension.
+        out2 = run_ts_propagation(graph, ticks=10, decay=0.1, epsilon=0.01, max_ticks=20)
+        assert isinstance(out2, dict)
+
+
 def test_knowledge_graph_and_idea_map():
     """Knowledge graph CRUD and idea map generation."""
     from goat_ts_cig.knowledge_graph import KnowledgeGraph

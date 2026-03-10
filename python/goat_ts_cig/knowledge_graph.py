@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any, Literal
 
 NodeType = Literal["Concept", "Document", "Observation", "Hypothesis"]
-EdgeType = Literal["Causal", "Semantic", "Evidence"]
+EdgeType = Literal["Causal", "Semantic", "Evidence", "relates_to"]
 
 
 class KnowledgeGraph:
